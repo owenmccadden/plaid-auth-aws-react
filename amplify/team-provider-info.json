@@ -19,7 +19,7 @@
         },
         "onsuccessfunction": {
           "deploymentBucketName": "amplify-plaidauthawsreact-dev-160903-deployment",
-          "s3Key": "amplify-builds/onsuccessfunction-56447343644641486678-build.zip"
+          "s3Key": "amplify-builds/onsuccessfunction-6361714c4d5247665254-build.zip"
         }
       }
     }

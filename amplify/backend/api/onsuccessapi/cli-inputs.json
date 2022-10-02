@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/getaccesstoken": {
+      "name": "/getaccesstoken",
+      "lambdaFunction": "onsuccessfunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

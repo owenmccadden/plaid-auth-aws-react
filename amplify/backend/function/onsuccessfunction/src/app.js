@@ -37,7 +37,7 @@ app.post('/getaccesstoken', function(request, res, next) {
     ITEM_ID = res.item_id;
 
     let putItemParams = {
-      TableName: 'plaidlinkdb-dev',
+      TableName: 'tutorialdb-dev',
       Item: {
         id: 'userid',
         accessToken: ACCESS_TOKEN

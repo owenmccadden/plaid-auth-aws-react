@@ -10,7 +10,8 @@ const PlaidLink = (props) => {
       public_token: token
     }
   }
-    API.post('linktokenapi', '/getaccesstoken', data);
+    console.log(data);
+    API.post('onsuccessapi', '/getaccesstoken', data);
   }
 
   const getTransactions = function() {

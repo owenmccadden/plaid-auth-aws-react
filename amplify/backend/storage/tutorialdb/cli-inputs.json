@@ -1,0 +1,10 @@
+{
+  "resourceName": "tutorialdb",
+  "tableName": "tutorialdb",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

@@ -18,10 +18,15 @@ export type AmplifyDependentResourcesAttributes = {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"
+        },
+        "onsuccessapi": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
         }
     },
     "storage": {
-        "plaidlinkdb": {
+        "tutorialdb": {
             "Name": "string",
             "Arn": "string",
             "StreamArn": "string",
