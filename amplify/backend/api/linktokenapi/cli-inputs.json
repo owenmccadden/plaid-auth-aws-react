@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/plaidLinkToken": {
+      "name": "/plaidLinkToken",
+      "lambdaFunction": "linktokenfunction",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/getaccesstoken": {
+      "name": "/getaccesstoken",
+      "lambdaFunction": "onsuccessfunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
