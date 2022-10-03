@@ -1,70 +1,17 @@
-# Getting Started with Create React App
+# Plaid Auth Flow with AWS and React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repo is to try a proof of concept of abstracting api calls to the Plaid api out to a serverless backend hosted on AWS. The react front-end simply has a couple of buttons for hitting the API endpoints and triggering the Plaid Auth Flow. I used this tutorial for reference: https://medium.com/@rdavidscott1/integrating-plaid-into-a-serverless-react-app-a8094c74425.
 
-## Available Scripts
+## Plaid Auth Flow
 
-In the project directory, you can run:
+![image](https://user-images.githubusercontent.com/52963762/193481789-01b07823-fded-47e2-afcb-74c22213f950.png)
 
-### `npm start`
+I was able to setup a serverless API on AWS with one functioning endpoint. The endpoint makes a request to create and return a plaid link_token to the client, which trigger's the plaid auth flow on the client side. Once the auth is complete, the request return the public_token.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+From here, I would need to add another endpoint to make a call to exchange the public token for an access_token and an item_id. These values would be stored in a database, and would be used to make requests for the user's Item Object
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+I started to run into a couple of problems with the second endpoint to swap the public token for the access token / item_id. The reason for this is that the tutorial I was following is a little old and uses a deprecated version of the Plaid SDK. I'm going to try this again with the current version of Plaid.
 
-### `npm test`
+## AWS Architecture
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I used an AWS CLI tool called Amplify (essentially the AWS version of Firebase) with a serverless Lambda / API Gateway architecture. Essentially each API endpoint triggers a lambda function that implements the business logic for the API call. You can read more about it here: https://docs.aws.amazon.com/whitepapers/latest/serverless-multi-tier-architectures-api-gateway-lambda/serverless-multi-tier-architectures-api-gateway-lambda.pdf#welcome.
