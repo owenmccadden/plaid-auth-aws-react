@@ -1,6 +1,8 @@
 # Plaid Auth Flow with AWS and React
 
-This repo is to try a proof of concept of abstracting api calls to the Plaid api out to a serverless backend hosted on AWS. The react front-end simply has a couple of buttons for hitting the API endpoints and triggering the Plaid Auth Flow. I used this tutorial for reference: https://medium.com/@rdavidscott1/integrating-plaid-into-a-serverless-react-app-a8094c74425.
+This repo is to try a proof of concept of abstracting api calls to the Plaid api out to a serverless backend hosted on AWS. The react front-end simply has a couple of buttons for hitting the API endpoints and triggering the Plaid Auth Flow for a Plaid sandbox account. I used this tutorial for reference: https://medium.com/@rdavidscott1/integrating-plaid-into-a-serverless-react-app-a8094c74425.
+
+The site is live here: https://plaid-auth-aws-react.vercel.app/. Right now the button that works is the "Get Link Token" button. This will hit a custom endpoint calling a lambda function to hit the Plaid API, create the link token, return the link token to the client, and kick off the Plaid Auth Flow.
 
 ## Plaid Auth Flow
 
